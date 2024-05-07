@@ -9,6 +9,8 @@ metadata:
     velero.io/storage-location: default
   namespace: openshift-adp
 spec:
+  excludedClusterScopedResources:
+  - Namespace
   includedClusterScopedResources:
   {% for r in resources.cluster.keys() -%}
   - {{r}}
