@@ -1,5 +1,4 @@
 #!/bin/bash
 
-jinja2 backup-template.yaml.j2 backup-resources.yaml
-
+jinja2 backup-restore-templates.yaml.j2 backup-resources-example.yaml
 
