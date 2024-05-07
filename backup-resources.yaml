@@ -1,0 +1,43 @@
+app:
+  name: vdu
+  namespace: vdu
+
+resources:
+  cluster:
+    customresourcedefinitions:
+      - certificateauthorities.com.ericsson.sec.tls
+      - clientcertificates.com.ericsson.sec.tls
+      - documentdbs.docdb.data.ericsson.com
+      - externalcertificates.certm.sec.ericsson.com
+      - internalcertificates.siptls.sec.ericsson.com
+      - internalusercas.siptls.sec.ericsson.com
+      - kvdbrdclusters.kvdbrd.data.ericsson.com
+      - operatorconfigurations.docdb.data.ericsson.com
+      - postgresqls.docdb.data.ericsson.com
+      - postgresteams.docdb.data.ericsson.com
+      - redisclusters.kvdbrd.gs.ericsson.com
+      - servercertificates.com.ericsson.sec.tls
+    securitycontextconstraints:
+      - vdu
+    clusterrolebindings:
+      - clusterrolebinding1
+      - clusterrolebinding2
+    clusterroles:
+      - clusterrole1
+      - clusterrole2
+
+  namespaced:
+    - secrets
+    - persistentvolumeclaims
+    - deployments
+    - statefulsets
+    - configmaps
+    - cronjobs
+    - services
+    - job
+    - poddisruptionbudgets
+    - roles
+    - rolebindings
+
+  excluded:
+    - persistentVolumes
