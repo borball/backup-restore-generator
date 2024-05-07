@@ -5,18 +5,9 @@ app:
 resources:
   cluster:
     customresourcedefinitions:
-      - certificateauthorities.com.ericsson.sec.tls
-      - clientcertificates.com.ericsson.sec.tls
-      - documentdbs.docdb.data.ericsson.com
-      - externalcertificates.certm.sec.ericsson.com
-      - internalcertificates.siptls.sec.ericsson.com
-      - internalusercas.siptls.sec.ericsson.com
-      - kvdbrdclusters.kvdbrd.data.ericsson.com
-      - operatorconfigurations.docdb.data.ericsson.com
-      - postgresqls.docdb.data.ericsson.com
-      - postgresteams.docdb.data.ericsson.com
-      - redisclusters.kvdbrd.gs.ericsson.com
-      - servercertificates.com.ericsson.sec.tls
+      - crd1
+      - crd2
+      - crd3
     securitycontextconstraints:
       - vdu
     clusterrolebindings:
