@@ -29,6 +29,7 @@ resources:
     - poddisruptionbudgets
     - roles
     - rolebindings
+    - serviceaccounts
 
   excluded:
     - persistentVolumes
