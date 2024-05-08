@@ -1,0 +1,21 @@
+---
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  labels:
+    velero.io/storage-location: default
+  name: backup-{{ app.name }}-namespaced-resources
+  namespace: openshift-adp
+spec:
+  includedNamespaces:
+  - {{ app.namespace }}
+  includedNamespaceScopedResources:
+  {% for r in resources.namespaced -%}
+  - {{ r }}
+  {% endfor -%}
+
+  excludedClusterScopedResources:
+  {% for r in resources.excluded -%}
+  - {{ r }}
+  {% endfor %}
+
