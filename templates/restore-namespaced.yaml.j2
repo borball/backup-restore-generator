@@ -1,0 +1,13 @@
+---
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: restore-{{ app.name }}-namespaced-resources
+  namespace: openshift-adp
+  labels:
+    velero.io/storage-location: default
+  annotations:
+    lca.openshift.io/apply-wave: "3"
+spec:
+  backupName: backup-{{ app.name }}-namespaced-resources
+

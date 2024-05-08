@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+  - name: oadp-backup-restore-cm
+    namespace: openshift-adp
+    files:
+      - acm-backup.yaml
+      - acm-restore.yaml
+      - backup-cluster.yaml
+      - restore-cluster.yaml
+      - backup-namespaced.yaml
+      - restore-namespaced.yaml
+generatorOptions:
+  disableNameSuffixHash: true
