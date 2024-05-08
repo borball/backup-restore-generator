@@ -3,7 +3,7 @@ apiVersion: velero.io/v1
 kind: Backup
 metadata:
   annotations:
-    lca.openshift.io/apply-label: "{% for r in resources.cluster.customresourcedefinitions %}apiextensions.k8s.io/v1/customresourcedefinition/{{r}},{% endfor %}{% for scc in resources.cluster.securitycontextconstraints %}security.openshift.io/v1/securitycontextconstraints/{{scc}},{% endfor %}{% for cr in resources.cluster.clusterroles %}rbac.authorization.k8s.io/v1/clusterroles/{{cr}},{% endfor %}{% for crb in resources.cluster.clusterrolebindings %}rbac.authorization.k8s.io/v1/clusterrolebindings/{{crb}}{{ "," if not loop.last else "" }}{% endfor %}"
+    lca.openshift.io/apply-label: "{% for r in resources.cluster.customresourcedefinitions %}apiextensions.k8s.io/v1/customresourcedefinitions/{{r}},{% endfor %}{% for scc in resources.cluster.securitycontextconstraints %}security.openshift.io/v1/securitycontextconstraints/{{scc}},{% endfor %}{% for cr in resources.cluster.clusterroles %}rbac.authorization.k8s.io/v1/clusterroles/{{cr}},{% endfor %}{% for crb in resources.cluster.clusterrolebindings %}rbac.authorization.k8s.io/v1/clusterrolebindings/{{crb}}{{ "," if not loop.last else "" }}{% endfor %}"
   name: backup-{{ app.name }}-cluster-resources
   labels:
     velero.io/storage-location: default
