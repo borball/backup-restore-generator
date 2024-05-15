@@ -1,5 +1,11 @@
 #!/bin/bash
 
+SED="sed"
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  echo "You may need to install gnu-sed first on your Mac if not yet."
+  SED='gsed'
+fi
 
 usage(){
   echo "Usage: $0 [resource.yaml]"
@@ -29,10 +35,10 @@ generate(){
   jinja2 templates/restore-cluster.yaml.j2 "$provided_resource" > auto-generated/restore-cluster.yaml
   jinja2 templates/restore-namespaced.yaml.j2 "$provided_resource" > auto-generated/restore-namespaced.yaml
 
-  sed -i -E 's/[[:space:]]+$//g' auto-generated/backup-cluster.yaml
-  sed -i -E 's/[[:space:]]+$//g' auto-generated/backup-namespaced.yaml
-  sed -i -E 's/[[:space:]]+$//g' auto-generated/restore-cluster.yaml
-  sed -i -E 's/[[:space:]]+$//g' auto-generated/restore-namespaced.yaml
+  $SED -i -E 's/[[:space:]]+$//g' auto-generated/backup-cluster.yaml
+  $SED -i -E 's/[[:space:]]+$//g' auto-generated/backup-namespaced.yaml
+  $SED -i -E 's/[[:space:]]+$//g' auto-generated/restore-cluster.yaml
+  $SED -i -E 's/[[:space:]]+$//g' auto-generated/restore-namespaced.yaml
 
   cp templates/acm-backup.yaml auto-generated/acm-backup.yaml
   cp templates/acm-restore.yaml auto-generated/acm-restore.yaml
